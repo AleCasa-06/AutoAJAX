@@ -36,36 +36,38 @@ $resultData = $mysqli->query("
     $DataDB = $resultData->fetch_all(MYSQLI_ASSOC); 
     
      
+?>
+    <html>
+    <head>
+        <title>Post</title>
+    </head>
+        <body>
+        <form method="POST">
+       
+    
+            <input type="text" name="criterio" placeholder="Cerca..." oninput="cerca()">
+            <button type="submit" id="cerca" name="search">Cerca</button>
 
+            
+            
+       
+        
+        
+    </form>
+
+        <script src="ajax.js"></script>
+        </body>
+</html>
+
+
+<?php
     for ($i = 0; $i < count($DataDB); $i++){
 
         $esercizio = $DataDB[$i];
         
         $utente = $esercizio['nome'];
 
-        echo "<h2>Nome Utente</h2>";
-        echo "<p>".$utente."</p>";
-
-        echo "<h2>Marca</h2>";
-        echo "<p>".$esercizio['marca']."</p>";
         
-        echo "<h2>Modello</h2>";
-        echo "<p>".$esercizio['modello']."</p>";
-
-        echo "<h2>Anno</h2>";
-        echo "<p>".$esercizio['anno']."</p>";
-
-        echo "<h2>Prezzo</h2>";
-        echo "<p>".$esercizio['prezzo']."</p>";
-
-        echo "<h2>Chilometri</h2>";
-        echo "<p>".$esercizio['chilometri']."</p>";
-
-        echo "<h2>Colore</h2>";
-        echo "<p>".$esercizio['colore']."</p>";
-
-        echo "<h2>Stato</h2>";
-        echo "<p>".$esercizio['stato']."</p>";
 
     }
 
@@ -75,11 +77,3 @@ $resultData = $mysqli->query("
 
 ?>
 
-<html>
-    <head>
-        <title>Post</title>
-    </head>
-        <body>
-
-        </body>
-</html>

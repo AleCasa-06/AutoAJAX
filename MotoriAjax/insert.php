@@ -4,7 +4,7 @@
     </head>
 
         <body>
-            <form method="post" action="index.php">
+            <form method="POST" action="post.php">
                 <label for="marca">Marca</label>
                 <input type="text" id="marca" name="marca" required><br>
 
@@ -28,32 +28,10 @@
                     <option value="nuova">Nuova</option>
                     <option value="usata">Usata</option>
                 </select><br>
-                <button type="submit" value="insert">Inserisci</button>
+                <button type="submit" name="insert">Inserisci</button>
             </form>
         </body>
 
 </html>
 
 
-<?php 
-
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-
-    $marca = $_POST['marca']; 
-    $modello = $_POST['modello']; 
-    $anno = $_POST['anno']; 
-    $prezzo = $_POST['prezzo']; 
-    $chilometri = $_POST['chilometraggio']; 
-    $colore = $_POST['colore']; 
-    $stato = $_POST['stato']; 
-
-
-
-    $mysql = new mysqli("localhost", "root", "", "auto_ajax", 3306); 
-    $stm = $mysql->prepare("INSERT INTO dati(marca, modello, anno, prezzo, chilometri, colore, stato) VALUES (?, ?, ?, ?, ?, ?, ?)"); 
-    $stm->bind_param("ssiiiss", $marca, $modello, $anno, $prezzo, $chilometri, $colore, $stato);
-
-    $stm->execute(); 
-}
-
-?>
